@@ -15,6 +15,8 @@ public class DisplayCard : MonoBehaviour
     public string cardName;
     public int cardEnergy;
     public string cardDescription;
+    public int cardType;
+    public Image cardTypeImage;
 
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI energyText;
@@ -33,6 +35,8 @@ public class DisplayCard : MonoBehaviour
         cardName = displayCard[0].cardName;
         cardEnergy = displayCard[0].cardEnergy;
         cardDescription = displayCard[0].cardDescription;
+        cardType = displayCard[0].cardType;
+        cardTypeImage.sprite = CardDatabase.typeList[cardType];
 
         nameText.text = " " + cardName;
         energyText.text = " " + cardEnergy;

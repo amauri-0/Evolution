@@ -9,14 +9,16 @@ public class Card
     public string cardName;
     public int cardEnergy;
     public string cardDescription;
-    
+    public int cardType; // 1: Instantâneo, 2: Prolongado, 3: Armadilha, 4: Campo
 
-    public Card(int CardId, string CardName, int CardEnergy, string CardDescription)
+
+    public Card(int CardId, string CardName, int CardEnergy, string CardDescription, int CardType)
     {
         cardId = CardId;
         cardName = CardName;
         cardEnergy = CardEnergy;
         cardDescription = CardDescription;
+        cardType = CardType;
     }
 
 
