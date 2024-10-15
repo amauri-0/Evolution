@@ -3,21 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 [System.Serializable]
 
-public class Card : MonoBehaviour
+public class Card
 {
-    public int id;
+    public int cardId;
     public string cardName;
-    public int cost;
-    public int power;
+    public int cardEnergy;
     public string cardDescription;
     
 
-    public Card(int Id, string CardName, int Cost, int Power, string CardDescription)
+    public Card(int CardId, string CardName, int CardEnergy, string CardDescription)
     {
-        id = Id;
+        cardId = CardId;
         cardName = CardName;
-        cost = Cost;
-        power = Power;
+        cardEnergy = CardEnergy;
         cardDescription = CardDescription;
     }
 
