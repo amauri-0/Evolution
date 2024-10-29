@@ -2,22 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
 using TMPro;
 
 public class DisplayCard : MonoBehaviour
 {
-
+    // Lista de cartas, será preenchida automaticamente
     public List<Card> displayCard = new List<Card>();
-    public int displayId;
+    public int displayId; // Índice da carta a ser exibida
 
-    public int cardId;
-    public string cardName;
-    public int cardEnergy;
-    public string cardDescription;
-    public int cardType;
+    // Componentes de UI para exibir as informações da carta
     public Image cardTypeImage;
-
+    public Image cardImage;
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI energyText;
     public TextMeshProUGUI descriptionText;
@@ -25,21 +20,42 @@ public class DisplayCard : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        displayCard[0] = CardDatabase.cardList[displayId];
+        // Carrega todas as cartas da pasta "Resources/Cards"
+        displayCard = CardDatabase.cardList;
+
+        // Verifica se a lista foi carregada corretamente
+        if (displayCard.Count > 0 && displayId < displayCard.Count)
+        {
+            // Atualiza a carta com base no ID fornecido
+            UpdateCardDisplay();
+        }
+        else
+        {
+            Debug.LogError("Nenhuma carta encontrada ou displayId fora do intervalo.");
+        }
     }
 
-    // Update is called once per frame
+    // Método que atualiza a exibição da carta
+    void UpdateCardDisplay()
+    {
+        // Acessa o Card selecionado
+        Card card = displayCard[displayId];
+
+        // Atualiza os campos do UI com base nos dados do Card
+        nameText.text = card.cardName;
+        energyText.text = card.cardEnergy.ToString();
+        descriptionText.text = card.cardDescription;
+        cardImage.sprite = card.cardImage;
+
+        // Define a imagem do tipo de carta usando o cardSymbol carregado automaticamente
+        card.LoadCardSymbol();
+        cardTypeImage.sprite = card.cardSymbol;
+    }
+
+    // Update é chamado uma vez por frame, se necessário (opcional para animações dinâmicas)
     void Update()
     {
-        cardId = displayCard[0].cardId;
-        cardName = displayCard[0].cardName;
-        cardEnergy = displayCard[0].cardEnergy;
-        cardDescription = displayCard[0].cardDescription;
-        cardType = displayCard[0].cardType;
-        cardTypeImage.sprite = CardDatabase.typeList[cardType];
-
-        nameText.text = " " + cardName;
-        energyText.text = " " + cardEnergy;
-        descriptionText.text = " " + cardDescription;
+        UpdateCardDisplay();
+        // Se precisar atualizar constantemente, por exemplo, em tempo real, chame UpdateCardDisplay aqui.
     }
 }
