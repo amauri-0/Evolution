@@ -58,4 +58,13 @@ public class DisplayCard : MonoBehaviour
         UpdateCardDisplay();
         // Se precisar atualizar constantemente, por exemplo, em tempo real, chame UpdateCardDisplay aqui.
     }
+
+    public void NextCard()
+    {
+        displayId++;
+        if (displayId >= displayCard.Count)
+        {
+            displayId = 1;
+        }
+    }
 }

@@ -6,6 +6,7 @@ public class PlayerDeck : MonoBehaviour
 {
     public List<Card> deck = new List<Card>();
     [HideInInspector]  // Oculta o campo completamente do Inspector
+    public List<Card> conteiner = new List<Card>();
     public int x;
     // Start is called before the first frame update
     void Start()
