@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2f51ab33c925ea4f80c021017f2386a, type: 3}
+  m_Name: 2_Desinteresse
+  m_EditorClassIdentifier: 
+  cardId: 1
+  cardName: Desinteresse
+  cardEnergy: 3
+  cardDescription: "Interrompa a gera\xE7\xE3o de filhotes por casal na popula\xE7\xE3o
+    inimiga durante 2 rodadas."
+  cardImage: {fileID: 21300000, guid: 916b38a1d598fd049bddf5d1b7c6abee, type: 3}
+  cardType: 1
+  cardSymbol: {fileID: 21300000, guid: 7619bd0d0ac70ac4aae4ecd6e7baa307, type: 3}

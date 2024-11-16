@@ -1,25 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[System.Serializable]
+using UnityEngine.UI;
 
-public class Card
+
+[CreateAssetMenu(fileName = "New Card", menuName = "Card")]
+public class Card : ScriptableObject
 {
+    public enum CardType
+    {
+        Instantaneo,
+        Prolongado
+    }
+
     public int cardId;
     public string cardName;
     public int cardEnergy;
     public string cardDescription;
-    public int cardType; // 1: Instantâneo, 2: Prolongado, 3: Armadilha, 4: Campo
+    public Sprite cardImage;
+    public CardType cardType; // enum selecionável no Inspector
 
+    [HideInInspector]  // Oculta o campo completamente do Inspector
+    public Sprite cardSymbol;
 
-    public Card(int CardId, string CardName, int CardEnergy, string CardDescription, int CardType)
+    // Método para carregar o símbolo da carta automaticamente da pasta "Resources"
+    public void LoadCardSymbol()
     {
-        cardId = CardId;
-        cardName = CardName;
-        cardEnergy = CardEnergy;
-        cardDescription = CardDescription;
-        cardType = CardType;
+        // Monta o caminho do sprite com base no nome do tipo de carta
+        string spritePath = "CardSymbols/" + cardType.ToString();
+
+        // Carrega o sprite da pasta "Resources/CardSymbols"
+        cardSymbol = Resources.Load<Sprite>(spritePath);
+
+        // Verifica se o sprite foi carregado corretamente
+        if (cardSymbol == null)
+        {
+            Debug.LogError($"Sprite para o tipo {cardType} não encontrado em {spritePath}");
+        }
     }
-
-
 }
+
