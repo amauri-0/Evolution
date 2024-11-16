@@ -10,9 +10,7 @@ public class Card : ScriptableObject
     public enum CardType
     {
         Instantaneo,
-        Prolongado,
-        Armadilha,
-        Campo
+        Prolongado
     }
 
     public int cardId;
